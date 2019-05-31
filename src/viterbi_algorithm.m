@@ -26,24 +26,24 @@ function [bestSequenceProbability, path] = viterbi_algorithm(prior, transmat, ob
         bestSequenceProbability(j, 1) = prior(j) * obsmat(j, sequence(1)); 
     end
     
-    % normalisation of the best sequence probability 
+    % (normalisation of the best sequence probability)
 
     for t = 2:T
       for j = 1:Q
          % at each time choose the optimal forward jump
-         pred = argmax(bestSequenceProbability(:, t - 1));
+         [~, pred] = max(bestSequenceProbability(:, t - 1));
         
          % update with observations
          bestPredecessorState(j, t) = pred;
          bestSequenceProbability(j, t) = bestSequenceProbability(pred, t - 1) * transmat(pred, j) * obsmat(j, sequence(t));
       end
       
-        % normalisation  of the best sequence probability
+        % (normalisation  of the best sequence probability)
     end
     
     % backpropagation
     % at the end, start from the optimal "ending" state
-    path(T) = argmax(bestSequenceProbability(:, T));
+    [~, path(T)] = max(bestSequenceProbability(:, T));
     
     for t = T - 1:-1:1
        % choose the best predecessor
