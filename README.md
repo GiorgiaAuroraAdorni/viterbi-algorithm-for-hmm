@@ -27,14 +27,14 @@ Given a sequence of observation, for example *E = {not injury, injury, not injur
 
 
 
-For the given HMM the algorithm returns:
+For the given *HMM* the algorithm returns:
 
 - the best sequence probability :
 
-|           | not injury | injury | not injury |
-| --------- | :--------: | :----: | :--------: |
-| climb     |   0.1960   | 0.0627 |   0.0050   |
-| not climb |   0.0180   | 0.0118 |   0.0339   |
+  |           | not injury | injury | not injury |
+  | --------- | :--------: | :----: | :--------: |
+  | climb     |   0.1960   | 0.0627 |   0.0050   |
+  | not climb |   0.0180   | 0.0118 |   0.0339   |
 
 - the most probable state sequence : 
 
